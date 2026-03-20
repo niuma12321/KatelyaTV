@@ -10,4 +10,7 @@ name = "katelyatv"
 # 只用默认存储，不用 D1
 USERNAME = "ljq"
 PASSWORD = "jk712732"
-NEXT_PUBLIC_STORAGE_TYPE = "localstorage"
+
+binding = "D1"
+database_name = "katelyatv-db"
+database_id = "403d8985-9f86-48c5-9920-4b04ff3c5d83"
