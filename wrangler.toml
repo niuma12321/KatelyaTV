@@ -6,13 +6,8 @@ pages_build_output_dir = ".vercel/output/static"
 [env.production]
 name = "katelyatv"
 
-[[env.production.d1_databases]]
-binding = "DB"
-database_name = "katelyatv-db"
-database_id = "403d8985-9f86-48c5-9920-4b04ff3c5d83"  # 替换为你的数据库ID
-
 [env.production.vars]
-# 只保留作者要求的 3 个核心变量
+# 只用默认存储，不用 D1
 USERNAME = "ljq"
 PASSWORD = "jk712732"
-NEXT_PUBLIC_STORAGE_TYPE = "d1"
+NEXT_PUBLIC_STORAGE_TYPE = "localstorage"
