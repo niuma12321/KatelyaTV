@@ -1,51 +1,35 @@
-# 基础配置（Cloudflare Pages 核心）
+# 基础配置（仅保留必需项）
 name = "katelyatv"
 compatibility_date = "2024-09-01"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-# 生产环境主配置
+# 生产环境配置
 [env.production]
 name = "katelyatv"
 
-# 生产环境 D1 数据库绑定（必须和 Pages 后台绑定的变量名一致）
+# D1 数据库绑定（必须和 Pages 后台一致）
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "katelyatv-db"
 database_id = "403d8985-9f86-48c5-9920-4b04ff3c5d83"  # 替换为你的数据库ID
 
-# 生产环境核心变量（作者要求 + 修复 500 错误 + 隐私保护）
+# 仅保留核心环境变量（适配你的表结构）
 [env.production.vars]
-# ========== 管理员账号（作者核心要求） ==========
-USERNAME = "ljq"                  # 你的管理员用户名
-PASSWORD = "jk712732"             # 作者要求的密码变量（必须配置）
-AUTH_PASSWORD = "jk712732"        # 兼容代码的密码变量（双保险）
+# 管理员账号（和你插入的一致）
+USERNAME = "ljq"
+PASSWORD = "jk712732"
 
-# ========== NextAuth 核心配置（修复 500 错误） ==========
+# NextAuth 核心配置（修复 500 关键）
 NEXTAUTH_URL = "https://katelyatv-cew.pages.dev"  # 你的 Pages 域名
-NEXTAUTH_SECRET = "8f9e7d6c5b4a32109876543210abcdef8f9e7d6c5b4a32109876543210abcdef"  # 安全密钥
+NEXTAUTH_SECRET = "8f9e7d6c5b4a32109876543210abcdef8f9e7d6c5b4a32109876543210abcdef"
 
-# ========== 存储配置（作者要求） ==========
+# 基础存储配置
 NEXT_PUBLIC_STORAGE_TYPE = "d1"
 
-# ========== 功能开关（隐私保护，仅自己可用） ==========
-NEXT_PUBLIC_ENABLE_REGISTER = false  # 关闭注册（作者方案的开关）
-DISABLE_REGISTRATION = "true"        # 兼容代码的注册开关（双保险）
-NEXT_PUBLIC_HIDE_FOOTER = "true"     # 隐藏页脚信息
-NEXT_PUBLIC_DISABLE_SHARE = "true"   # 关闭分享功能
+# 隐私保护（仅自己可用）
+NEXT_PUBLIC_ENABLE_REGISTER = false
 
-# ========== 限流配置（防刷/防爬虫） ==========
-RATE_LIMIT_MAX = "10"                # 每分钟仅允许10次请求
-RATE_LIMIT_WINDOW = "60000"          # 限流时间窗口（1分钟）
-
-# ========== 其他基础配置（作者方案默认） ==========
-NEXT_PUBLIC_SITE_NAME = "gkdtv"
-NEXT_PUBLIC_SITE_DESCRIPTION = "高性能影视播放平台"
-IMAGE_PROXY_ENABLED = "true"
-CACHE_TTL = "3600"
-CORS_ORIGIN = "*"
-HEALTH_CHECK_ENABLED = "true"
-HEALTH_CHECK_INTERVAL = "30"
-LOG_LEVEL = "info"
-LOG_FORMAT = "json"
+# 简化其他配置（避免冲突）
 NODE_ENV = "production"
+CORS_ORIGIN = "*"
