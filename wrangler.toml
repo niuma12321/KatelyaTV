@@ -1,35 +1,18 @@
-# 基础配置（仅保留必需项）
 name = "katelyatv"
 compatibility_date = "2024-09-01"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-# 生产环境配置
 [env.production]
 name = "katelyatv"
 
-# D1 数据库绑定（必须和 Pages 后台一致）
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "katelyatv-db"
 database_id = "403d8985-9f86-48c5-9920-4b04ff3c5d83"  # 替换为你的数据库ID
 
-# 仅保留核心环境变量（适配你的表结构）
 [env.production.vars]
-# 管理员账号（和你插入的一致）
+# 只保留作者要求的 3 个核心变量
 USERNAME = "ljq"
 PASSWORD = "jk712732"
-
-# NextAuth 核心配置（修复 500 关键）
-NEXTAUTH_URL = "https://katelyatv-cew.pages.dev"  # 你的 Pages 域名
-NEXTAUTH_SECRET = "8f9e7d6c5b4a32109876543210abcdef8f9e7d6c5b4a32109876543210abcdef"
-
-# 基础存储配置
 NEXT_PUBLIC_STORAGE_TYPE = "d1"
-
-# 隐私保护（仅自己可用）
-NEXT_PUBLIC_ENABLE_REGISTER = false
-
-# 简化其他配置（避免冲突）
-NODE_ENV = "production"
-CORS_ORIGIN = "*"
